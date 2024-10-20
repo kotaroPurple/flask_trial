@@ -1,10 +1,18 @@
 
-# import os
+from pathlib import Path
+
 from flask import Flask
-# from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__, template_folder='../templates/')
-# base_dir = os.path.dirname(__file__)
-# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + os.path.join(base_dir, "CRM.db")
-# db = SQLAlchemy(app)
+
+# register DB
+db_path = Path(__file__).parents[1] / 'DB' / 'trial.db'
+print('----')
+print(db_path)
+print()
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///" + str(db_path)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)

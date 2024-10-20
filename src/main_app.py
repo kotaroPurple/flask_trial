@@ -2,12 +2,14 @@
 from flask import render_template
 
 from core.app import app
+from core.models import Customer
 
 
 # top page
 @app.route("/")
 def index():
-    return render_template("1_index.html")
+    customers = Customer.query.all()
+    return render_template("1_index.html", customers=customers)
 
 
 @app.route("/sub_index")
