@@ -29,6 +29,14 @@ def purchase():
     return render_template("3_purchase.html", customers=customers, items=items)
 
 
+# チェックボックス等
+@app.route("/trial")
+def trial():
+    members = ['北海道', '東京', '京都']
+    genre_list = ['中華', '和食', 'イタリアン', 'フレンチ', 'アメリカン']
+    return render_template("trial.html", members=members, genre_list=genre_list)
+
+
 # 機能系
 # 1.1 顧客登録
 @app.route("/add_customer", methods=["POST"])
@@ -95,6 +103,20 @@ def add_purchase():
         return render_template("error.html")
 
     return render_template("3-1_confirm_purchase.html", purchase=purchase)
+
+
+# GUI Trial
+@app.route("/trial_function", methods=['POST'])
+def trial_function():
+    # チェックされたチェックボックスの値を取得
+    selected_members = request.form.getlist('input_members')
+    genres = request.form.getlist('input_genres')
+
+    if selected_members:
+        # 取得した値を処理（ここでは単に表示）
+        return f"選択されたメンバー: {', '.join(selected_members)}" + ' : ' + ', '.join(genres)
+    else:
+        return "メンバーが選択されていません。"
 
 
 if __name__ == '__main__':

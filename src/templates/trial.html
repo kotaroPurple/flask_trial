@@ -1,0 +1,60 @@
+
+{% extends "base.html" %} {% block content %}
+
+<p>Trial Page</p>
+
+<form action="/trial_function" method="POST">
+    <p>場所を選ぶ</p>
+    <div class="column mb-3">
+        <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                id="All"
+                name="input_members"
+                value="All" checked>
+            <label class="form-check-label" for="All">ALL</label>
+        </div>
+        {% for member in members %}
+        <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                id="{{ member }}"
+                name="input_members"
+                value="{{ member }}">
+            <label class="form-check-label" for="{{ member }}">{{ member }}</label>
+        </div>
+        {% endfor %}
+    </div>
+    <br />
+
+    <p>ジャンルを選ぶ</p>
+    <div class="column mb-3">
+        <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                id="All"
+                name="input_members"
+                value="All" checked>
+            <label class="form-check-label" for="All">ALL</label>
+        </div>
+        {% for genre in genre_list %}
+        <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="checkbox"
+                id="{{ genre }}"
+                name="input_genres"
+                value="{{ genre }}">
+            <label class="form-check-label" for="{{ genre }}">{{ genre }}</label>
+        </div>
+        {% endfor %}
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary">送信</button>
+</form>
+
+{% endblock %}
