@@ -67,12 +67,14 @@ source = { virtual = "." }
 dependencies = [
     { name = "flask" },
     { name = "flask-sqlalchemy" },
+    { name = "sqlalchemy" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "flask", specifier = ">=3.0.3" },
     { name = "flask-sqlalchemy", specifier = ">=3.1.1" },
+    { name = "sqlalchemy", specifier = ">=2.0.36" },
 ]
 
 [[package]]
